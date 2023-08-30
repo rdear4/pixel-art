@@ -10,7 +10,7 @@ fetch("api/saved")
 
         //Create button
         let anchor = document.createElement("a")
-        anchor.setAttribute("href", `/imageselect?name=${user}`)
+        anchor.setAttribute("href", `/imageselect.html?name=${user}`)
         
         let button = document.createElement('button')
         button.classList.add("button")

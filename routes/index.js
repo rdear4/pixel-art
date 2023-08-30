@@ -21,6 +21,21 @@ router.get("/saved", (req, res) => {
 
 })
 
+router.get("/images", (req, res) => {
+
+  //Get all the saved files from disk. Return list of names
+
+  try {
+    console.log(`${__dirname}/../public/javascripts/saved/${req.query.name}.json`)
+    let fileData = fs.readFileSync(`${__dirname}/../public/javascripts/saved/${req.query.name}.json`)
+    res.send(fileData)
+  } catch (e) {
+    console.log(e)
+    res.send("ERROR")
+  }
+
+})
+
 
 
 module.exports = router;
