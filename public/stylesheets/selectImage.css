@@ -1,0 +1,99 @@
+#student-wrapper {
+
+    /* background-color: red; */
+
+    display: flex;
+
+    flex-direction: column;
+
+    width: 800px;
+
+}
+
+#student-wrapper #name-wrapper {
+    display: flex;
+    
+    justify-content:flex-start;
+    align-items: center;
+
+    /* background-color: lime; */
+
+    color: black;
+
+    font-size: 25px;
+
+    margin-bottom: 20px;
+
+}
+
+#student-wrapper #images-wrapper {
+
+    /* background-color: aqua; */
+
+    display: flex;
+
+    
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper {
+
+    width: 320px;
+    /* height: 400px; */
+
+    /* background-color: pink; */
+
+    border: solid 2px green;
+    padding: 5px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper img {
+
+    width: 100%;
+
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper .image-name-wrapper {
+
+    margin-top: 20px;
+    /* background-color: orange; */
+
+    font-size: 15px;
+
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper a {
+
+    text-decoration: none;
+
+    margin-top: 20px;
+
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper a .image-select-button {
+
+    width: 100px;
+    height: 40px;
+
+    border: solid 4px black;
+    
+    background-color: lime;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+}
+
+#student-wrapper #images-wrapper .image-selection-wrapper a .image-select-button:hover {
+
+    background-color: aqua!important;
+    cursor: pointer;
+}
