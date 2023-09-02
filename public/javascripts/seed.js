@@ -10,14 +10,14 @@ const TEST_FILES = [
         name: "Ron Dear",
         filename: "dear-ron"
     },
-    // {
-    //     name: "Thomas Dear",
-    //     filename: "dear-thomas"
-    // },
-    // {
-    //     name: "Emily Dear",
-    //     filename: "dear-emily"
-    // }
+    {
+        name: "Thomas Dear",
+        filename: "dear-thomas"
+    },
+    {
+        name: "Emily Dear",
+        filename: "dear-emily"
+    }
 ]
 
 

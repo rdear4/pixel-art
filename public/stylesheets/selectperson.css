@@ -8,6 +8,8 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   display: flex;
   flex-flow: column;
+
+  /* background-color: blueviolet; */
 }
 
 #header {
@@ -19,6 +21,46 @@ body {
   align-items: center;
 }
 
+.button {
+
+  cursor: pointer;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: black;
+
+}
+
+.button-link {
+  text-decoration: none;
+}
+
+.button.lg {
+
+  width: 140px;
+  height: 70px;
+  border: solid 4px black;
+
+  border-radius: 10px;
+
+  font-size: 20px;
+
+
+}
+
+.button:hover {
+  background-color: aqua!important;
+}
+
+.button .button-label {
+
+  /* background-color: red; */
+
+}
+
 #main-content {
 
   /* background-color: green; */
@@ -27,9 +69,21 @@ body {
   margin-top: 50px;
 
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 
+}
+
+#main-content #option-buttons-wrapper {
+
+    /* background-color: lime; */
+    padding: 20px;
+    width: 100%;
+
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: flex-end;
 }
 
 #main-content #names-wrapper a {
@@ -40,8 +94,11 @@ body {
 
 #main-content #names-wrapper {
 
+  /* background-color: red; */
   margin: 0 auto;
-  width: 500px;
+  /* width: 500px; */
+flex: 1 1 auto;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -62,7 +119,7 @@ body {
   align-items: center;
 
   border: solid 2px black;
-  background-color: green;
+  /* background-color: green; */
 
   color: white;
 

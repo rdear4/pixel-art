@@ -2,8 +2,9 @@
 
     <head>
         <title>Pixel Art - Select Image</title>
-        <link rel="stylesheet" href="/stylesheets/style.css">
-        <link rel="stylesheet" href="/stylesheets/selectImage.css">
+        <link rel="stylesheet" href="/stylesheets/style.css" />
+        <link rel="stylesheet" href="/stylesheets/selectperson.css" />
+        <link rel="stylesheet" href="/stylesheets/selectimage.css" />
         
     </head>
 
@@ -14,9 +15,19 @@
         
           <div id="main-content">
 
+            <div id="option-buttons-wrapper">
+                <!-- <a class="button-link" href="/selectimage.html?new=1"> -->
+                    <div id="new-image-button" class="button lg">
+                    <span class="button-label">
+                        New Drawing
+                    </span>
+                    </div>
+                <!-- </a> -->
+            </div>
+
             <div id="student-wrapper">
                 <div id="name-wrapper">
-                    <span>Thomas Dear</span>
+                    <input id="person-name" type="text" value="" placeholder="Enter name here..." \>
                 </div>
 
                 <div id="images-wrapper">
@@ -24,7 +35,7 @@
 
                         <img src="images/dear-ron-0.png" />
                         <div class="image-name-wrapper">
-                            <span>Image 0</span>
+                            <span class="image-name">Image 0</span>
                         </div>
                         <a href="#">
                             <button class="image-select-button">
@@ -42,5 +53,5 @@
 
     </body>
 
-    <script src="javascripts/imageselect.js"></script>
+    <script src="javascripts/selectimage.js"></script>
 </html>
