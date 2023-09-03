@@ -1,15 +1,37 @@
 const checkFn = (callback) => {
 
     
-    console.log("Checking...")
+    //Check to make sure that there is name in the person-name field
+    let personName = document.getElementById("person-name").value
+    if (personName === "" || personName.length <= 3) {
+        alert("Please enter a name before continuing.")
+    } else {
+        console.log("Good to go!")
+        callback()
+    }
 
-    callback()
+    
 
 }
 
 const newImageFn = () => {
 
-    console.log("new Image")
+    // console.log("new Image")
+
+    //Create a new image for this user
+    console.log(JSON.stringify({name: document.getElementById("person-name").value}))
+    fetch("/api/image/new", {method: "POST", headers: {
+        "Content-Type": "application/json"
+    },
+    body: JSON.stringify({name: document.getElementById("person-name").value})})
+    .then(res => res.text())
+    .then(res => {
+        //Redirect to the edit image page
+        window.location.replace(`http://pixel.wraughn.com/draw?id=${res.imgId}`)
+    })
+    .catch(e => console.log(e))
+
+    
 }
 
 //Attach function to new image button

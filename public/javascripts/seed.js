@@ -29,19 +29,22 @@ const context = canvas.getContext("2d")
 const createFile = (name, filename) => {
     
     let testFileData = {
-        
+        "filename": filename,
         "name": name,
         "images": [
             {
                 "id": uuidv4(),
                 "name": "Image - 1",
                 "dimensions": [32, 32],
-                "pixelInfo": []
+                "pixelInfo": [],
+                "log": [
+                    {
+                        "time": new Date().getTime(),
+                        "note": "File Created"
+                    }
+                ]
             }
         ],
-        "updateLog": [
-    
-        ]
     }
     
     // Create the first test image data - alternating RGBCyan color sequence
@@ -60,8 +63,6 @@ const createFile = (name, filename) => {
     
     }
     
-    testFileData.updateLog.push(new Date().getTime())
-    
     try {
         fs.writeFileSync(`${__dirname}/saved/${filename}.json`, JSON.stringify(testFileData))
 
@@ -71,12 +72,14 @@ const createFile = (name, filename) => {
             context.fillStyle = `rgb(${testFileData.images[0].pixelInfo[i][0]}, ${testFileData.images[0].pixelInfo[i][1]}, ${testFileData.images[0].pixelInfo[i][2]} / ${testFileData.images[0].pixelInfo[i][3] / 255.0})`
             context.fillRect(i % 32, Math.floor(i / 32), 1, 1)
 
-            const buffer = canvas.toBuffer("image/png")
-            try {
-                fs.writeFileSync(`${__dirname}/../images/${filename}-0.png`, buffer)
-            } catch (e) {
-                console.log(e)
-            }
+            
+        }
+
+        const buffer = canvas.toBuffer("image/png")
+        try {
+            fs.writeFileSync(`${__dirname}/../images/${filename}-0.png`, buffer)
+        } catch (e) {
+            console.log(e)
         }
         
         return true
