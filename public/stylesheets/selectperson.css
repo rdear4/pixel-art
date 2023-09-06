@@ -34,6 +34,29 @@ body {
 
 }
 
+.button .name-wrapper {
+
+  /* background-color: red; */
+  width: 100%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+
+}
+
+.button .last-name {
+  /* background-color: dodgerblue; */
+  float: left;
+}
+
+.button .first-name {
+  /* background-color: blueviolet; */
+  float: right;
+  
+}
+
 .button-link {
   text-decoration: none;
 }
@@ -58,6 +81,7 @@ body {
 .button .button-label {
 
   /* background-color: red; */
+  color: white;
 
 }
 

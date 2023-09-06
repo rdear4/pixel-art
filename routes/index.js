@@ -3,7 +3,8 @@ var router = express.Router();
 const fs = require('fs');
 var path = require('path');
 const { v4: uuidv4 } = require('uuid');
-const { createCanvas } = require("canvas")
+const { createCanvas } = require("canvas");
+const { runInContext } = require('vm');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -19,6 +20,60 @@ router.get("/saved", (req, res) => {
   } catch (e) {
     console.log(e)
     res.send("ERROR")
+  }
+
+})
+
+router.put("/image/:user", (req, res) => {
+  console.log(req.params.user)
+  console.log(req.body)
+
+  //Read the save file
+  let fileInfo = JSON.parse(fs.readFileSync(`${__dirname}/../public/javascripts/saved/${req.params.user}.json`))
+
+  // console.log(fileInfo)
+
+  fileInfo.images.find((el, i) => {
+    if (el.id === req.body.id) {
+      console.log("Foudn!")
+      console.log(i)
+      fileInfo.images[i] = {...req.body, name: "TEst"}
+
+      try {
+        fs.writeFileSync(`${__dirname}/../public/javascripts/saved/${req.params.user}.json`, JSON.stringify(fileInfo))
+        
+        //Update Image
+        updateImage(`${req.params.user}-${i}.png`, req.body.pixelInfo)
+        res.send("Good")
+      } catch (e) {
+        console.log(e)
+        res.send("Fail")
+      }
+
+    }
+  })
+
+  
+  
+  
+
+})
+
+router.get("/imageData", (req, res) => {
+
+  console.log(req.query.id)
+  console.log(req.query.name)
+
+  try {
+    let saveData = JSON.parse(fs.readFileSync(`${__dirname}/../public/javascripts/saved/${req.query.name}.json`))
+
+    let imageData = saveData.images.filter((img, i) => img.id === req.query.id)
+
+    console.log(imageData[0])
+
+    res.json(imageData[0])
+  } catch (e) {
+    res.status(500).json({err: e})
   }
 
 })
@@ -85,7 +140,7 @@ const addNewImageToSave = (saveData) => {
     id: uuidv4(),
     name: "",
     dimensions: [32, 32],
-    pixelInfo: new Array(32*32).fill([255, 0, 0, 255]),
+    pixelInfo: new Array(32*32).fill([255, 255, 255, 0]),
     "log": [
         {
             "time": new Date().getTime(),
@@ -122,12 +177,12 @@ router.post("/image/new", (req, res) => {
     
     //Add new image to the file data
     userData = {...addNewImageToSave(userData)}
-
+    console.log(userData)
     // console.log(`There are now ${userData.images.length} images`)
 
     //Send back the new image id
 
-    res.json({imgId: userData.images[userData.images.length-1].id})
+    res.json({imgId: userData.images[userData.images.length-1].id, userName: userData.filename})
 
 
   //   if (getUserSaveData()) {
@@ -155,6 +210,30 @@ router.post("/image/new", (req, res) => {
   
 })
 
+const updateImage = (filename, pixelData) => {
+  console.log(`${filename} ${pixelData.length}`)
+  const canvas = createCanvas(32*20, 32*20)
+  const context = canvas.getContext("2d")
+
+  for (let i = 0; i < 32*32; i++) {
+
+    //let color = (i % 2 === 0) ? `rgb(0, 0, 0 / 255.0})` : `rgb(0, 0, 0 / 255.0})`
+    let color = `rgba(${pixelData[i][0]}, ${pixelData[i][1]}, ${pixelData[i][2]} / ${pixelData[i][3]})`
+    // console.log(color)
+    context.fillStyle = color
+    context.fillRect((i % 32) * 20, (Math.floor(i / 32)) * 20, 20, 20)
+
+  }
+
+  const buffer = canvas.toBuffer("image/png")
+  try {
+      fs.writeFileSync(`${__dirname}/../public/images/app/${filename}`, buffer)
+  } catch (e) {
+      console.log(e)
+  }
+
+}
+
 const createTmpImage = (filename) => {
 
   const canvas = createCanvas(32, 32)
@@ -162,7 +241,7 @@ const createTmpImage = (filename) => {
 
   for (let i = 0; i < 32*32; i++) {
 
-    let color = (i % 2 === 0) ? `rgb(255, 0, 255 / 255.0})` : `rgb(255, 0, 0 / 255.0})`
+    let color = (i % 2 === 0) ? `rgb(0, 0, 0 / 255.0})` : `rgb(0, 0, 0 / 255.0})`
     context.fillStyle = color
     context.fillRect(i % 32, Math.floor(i / 32), 1, 1)
 
@@ -170,7 +249,7 @@ const createTmpImage = (filename) => {
 
   const buffer = canvas.toBuffer("image/png")
   try {
-      fs.writeFileSync(`${__dirname}/../public/images/${filename}`, buffer)
+      fs.writeFileSync(`${__dirname}/../public/images/app/${filename}`, buffer)
   } catch (e) {
       console.log(e)
   }

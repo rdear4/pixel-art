@@ -24,10 +24,11 @@ const newImageFn = () => {
         "Content-Type": "application/json"
     },
     body: JSON.stringify({name: document.getElementById("person-name").value})})
-    .then(res => res.text())
-    .then(res => {
+    .then(res => res.json())
+    .then(json => {
+        console.log(json)
         //Redirect to the edit image page
-        window.location.replace(`http://pixel.wraughn.com/draw?id=${res.imgId}`)
+        window.location.replace(`http://pixel.wraughn.com/draw.html?name=${json.userName}&id=${json.imgId}`)
     })
     .catch(e => console.log(e))
 
@@ -62,7 +63,7 @@ if (newUser === '1') {
             imageSelectionWrapper.classList.add('image-selection-wrapper')
 
             let imageEl = document.createElement('img')
-            imageEl.setAttribute('src', `images/${usrName}-${imageIndex}.png`)
+            imageEl.setAttribute('src', `images/app/${usrName}-${imageIndex}.png`)
 
             imageSelectionWrapper.appendChild(imageEl)
 
@@ -78,7 +79,7 @@ if (newUser === '1') {
             imageSelectionWrapper.appendChild(imageNameWrapper)
 
             let anchorElement = document.createElement('a')
-            anchorElement.setAttribute('href', '#')
+            anchorElement.setAttribute('href', `draw.html?name=${usrName}&id=${json.images[imageIndex].id}`)
 
             let buttonWrapper = document.createElement('button')
             buttonWrapper.classList.add('image-select-button')

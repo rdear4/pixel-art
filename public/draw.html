@@ -1,0 +1,99 @@
+<html>
+
+
+    <head>
+
+        <link type="text/css" rel="stylesheet" href="/stylesheets/draw.css" />
+    </head>
+
+
+    <body>
+
+        <div id="main-app-wrapper">
+            <div id="canvas-wrapper">
+
+            </div>
+            <div id="app-controls-wrapper">
+                <div class="app-controls-section">
+                    <div class="ac-section-header">
+                        <span>Color Picker</span>
+                    </div>
+                    <div class="ac-section-content">
+                        <input type="color" id="colorpicker" value="#ff0000">
+                    </div>
+                </div>
+                <div class="app-controls-section">
+                    <div class="ac-section-header">
+                        <span>Canvas Options</span>
+                    </div>
+                    <div class="ac-section-content">
+                        <div id="app-options-button-wrapper">
+                            <button onclick="toggleNumbers()"id="numbers-button">
+                                <span id="show-numbers-label">Turn Numbers OFF</span>
+                            </button>
+                            <button onclick="toggleHover()" id="hover-button">
+                                <span id="show-hover-label">Turn Hover OFF</span>
+                            </button>
+                            <button onclick="toggleChecker()" id="hover-button">
+                                <span id="show-checker-label">Turn Checkerboard OFF</span>
+                            </button>
+                            <button onclick="clearCanvas()" id="clear-canvas">
+                                <span id="show-checker-label">Clear Canvas</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-controls-section">
+                    <div class="ac-section-header">
+                        <span>Color History</span>
+                    </div>
+                    <div class="ac-section-content">
+                        <div id="previous-colors-wrapper">
+                            <!-- <div class="color-history-button" colorval="#00ff00">
+                                <span class="color-history-button-color" style="background-color:#00ff00"></span>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-controls-section">
+                    <div class="ac-section-header">
+                        <span>Tools</span>
+                    </div>
+                    <div class="ac-section-content">
+                        <div id="tools-wrapper">
+                            <div onclick="changeTool(0)" class="tool-button active" colorval="#00ff00">
+                                <img src="images/pen.png" />
+                            </div>
+
+                            <div onclick="changeTool(1)" class="tool-button" colorval="#00ff00">
+                                <img src="images/eraser.png" />
+                            </div>
+
+                            
+                        </div>
+                    </div>
+                </div>
+
+                <div class="app-controls-section">
+                    <div class="ac-section-header">
+
+                        <button onclick="saveimage()">
+                            <span>SAVE</span>
+                        </button>
+
+                    </div>
+
+                </div>
+                
+            </div>
+        </div>
+        
+
+
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.7.0/lib/p5.js"></script>
+    <script src="javascripts/draw.js"></script>
+</html>

@@ -1,0 +1,187 @@
+* {
+    box-sizing: border-box;
+}
+
+#main-app-wrapper {
+
+    display: flex;
+
+    padding: 20px;
+
+    /* background-color: red; */
+
+
+}
+
+#main-app-wrapper #canvas-wrapper {
+
+    background-color: green;
+    flex: 0 0 auto;
+    
+
+}
+
+#main-app-wrapper #app-controls-wrapper {
+
+    flex: 0 0 auto;
+    padding: 20px;
+    /* background-color: lime; */
+
+    display: flex;
+    flex-direction: column;
+
+    padding-left: 80px;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section {
+
+    flex: 0 0 auto;
+    /* background-color: pink; */
+    margin-bottom: 20px;
+    
+
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px black;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-header {
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 5px;
+
+    /* background-color: fuchsia; */
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content {
+
+    display: flex;
+    justify-content: flex-start;
+    
+
+    /* background-color: brown; */
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #app-options-button-wrapper {
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section #app-options-button-wrapper button {
+
+    flex: 0 0 auto;
+    width: 200px;
+    height: 40px;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #previous-colors-wrapper {
+
+    display: grid;
+
+    /* background-color: dodgerblue; */
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section #app-options-button-wrapper button:not(:last-of-type) {
+
+    margin-bottom: 10px;
+
+}
+
+.color-history-button {
+
+    width: 60px;
+    height: 60px;
+    /* display: block; */
+    /* padding: 10px; */
+    margin: 0;
+
+    border: solid 1px black;
+    border-radius: 5px;
+    background-color: rgb(204, 204, 204);
+
+    position: relative;
+
+    cursor: pointer;
+
+}
+
+.color-history-button:hover {
+
+    background-color: grey!important;
+
+}
+
+.color-history-button .color-history-button-color {
+    top: 10px;
+    left: 10px;
+    width: 38px;
+    height: 38px;
+    position: absolute;
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper {
+
+    display: grid;
+
+    /* background-color: dodgerblue; */
+
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 5px;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper .tool-button {
+
+    width: 50px;
+    height: 50px;
+
+    background-color: grey;
+
+    padding: 10px;
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper .tool-button img {
+
+    /* width: 40px; */
+    width: 100%;
+    /* background-color: red; */
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper .tool-button:hover {
+
+    background-color: lime;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper .tool-button.active {
+
+    background-color: aqua!important;
+
+}
+
+#main-app-wrapper #app-controls-wrapper .app-controls-section .ac-section-content #tools-wrapper .tool-button.active:hover {
+
+    background-color: aqua!important;
+
+}
