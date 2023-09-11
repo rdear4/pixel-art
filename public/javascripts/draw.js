@@ -1,7 +1,8 @@
 let imageInfo = {}
-let showNumbers = true
+let showNumbers = false
 let showHover = true
-let showChecker = true;
+let showChecker = false;
+let showPixelBorder = true;
 
 let colorHistory = []
 
@@ -108,7 +109,7 @@ function draw() {
         rect(0,0,canvasSize.width, canvasSize.height)
     }
     noFill()
-    stroke('black')
+    stroke((showPixelBorder) ? color(0,0,0,50) : color(0,0,0,0))
     strokeWeight(1)
     // console.log(imageInfo.pixelInfo)
     if (imageInfo.pixelInfo !== undefined) {
@@ -155,7 +156,6 @@ function draw() {
 
         push()
         
-
         let x = Math.floor(mouseX/pixelSize) * pixelSize
         let y = Math.floor(mouseY/pixelSize) * pixelSize
 
@@ -167,12 +167,6 @@ function draw() {
         pop()
 
     }
-
-    
-
-
-
-    // noLoop()
 
 }
 
@@ -315,4 +309,14 @@ const saveimage = () => {
         },
         body: JSON.stringify(imageInfo)
     })
+}
+
+const toggleBorder = () => {
+
+    console.log("TEST")
+
+    showPixelBorder = !showPixelBorder
+
+    document.getElementById('show-border').innerText = (showPixelBorder) ? "Turn Pixel Border OFF" : "Turn Pixel Border ON"
+
 }
