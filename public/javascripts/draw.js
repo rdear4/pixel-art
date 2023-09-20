@@ -23,6 +23,8 @@ function preload() {
     .then(res => res.json())
     .then(json => {
         imageInfo = json
+        console.log(imageInfo.name)
+        document.getElementById("image-name").value = imageInfo.name
     })
 }
 
@@ -300,8 +302,11 @@ const saveimage = () => {
 
     let sp = new URLSearchParams(window.location.search)
     let name = sp.get('name')
-    console.log(name)
+    console.log(`New Name: ${document.getElementById("image-name").value}`)
 
+    imageInfo.name = document.getElementById("image-name").value
+    console.log(imageInfo)
+    
     fetch(`/api/image/${name}`, {
         method: "PUT",
         headers: {

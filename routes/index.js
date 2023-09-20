@@ -37,7 +37,7 @@ router.put("/image/:user", (req, res) => {
     if (el.id === req.body.id) {
       console.log("Foudn!")
       console.log(i)
-      fileInfo.images[i] = {...req.body, name: "TEst"}
+      fileInfo.images[i] = {...req.body}
 
       try {
         fs.writeFileSync(`${__dirname}/../public/javascripts/saved/${req.params.user}.json`, JSON.stringify(fileInfo))
