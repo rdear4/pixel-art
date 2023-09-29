@@ -26,22 +26,42 @@ body {
   cursor: pointer;
 
   display: flex;
+  flex-direction: column;
 
   justify-content: center;
   align-items: center;
   background-color: blue;
   color: black;
+  padding: 5px;
+
+}
+
+.button .image-wrapper {
+
+  /* background-color: violet; */
+  /* padding: 10px; */
+  width: 100px;
+  height: 100px;
+  margin-bottom: 10px;
+
+}
+
+.button .image-wrapper img {
+
+  background-color: black;
+  object-fit: contain;
+  width: 100%;
 
 }
 
 .button .name-wrapper {
 
   /* background-color: red; */
-  width: 100%;
+  /* width: 100%; */
 
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 
 
 }
@@ -49,6 +69,7 @@ body {
 .button .last-name {
   /* background-color: dodgerblue; */
   float: left;
+  margin-right: 10px;
 }
 
 .button .first-name {
@@ -64,7 +85,7 @@ body {
 .button.lg {
 
   width: 140px;
-  height: 70px;
+  /* height: 70px; */
   border: solid 4px black;
 
   border-radius: 10px;
@@ -118,14 +139,17 @@ body {
 
 #main-content #names-wrapper {
 
-  /* background-color: red; */
+  /* background-color: dodgerblue; */
   margin: 0 auto;
   /* width: 500px; */
 flex: 1 1 auto;
-  width: 100%;
+  /* width: 100%; */
 
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 10px;
+  /* display: flex; */
+  /* flex-direction: column; */
 
   /* justify-content: center; */
   align-items: center;
@@ -136,7 +160,7 @@ flex: 1 1 auto;
 #main-content #names-wrapper a .button {
 
   width: 200px;
-  height: 30px;
+  /* height: 30px; */
 
   display: flex;
   justify-content: center;

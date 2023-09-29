@@ -184,30 +184,40 @@ router.post("/image/new", (req, res) => {
 
     res.json({imgId: userData.images[userData.images.length-1].id, userName: userData.filename})
 
-
-  //   if (getUserSaveData()) {
-  //     console.log("Good to go")
-  //     //Create the new save file
-  //     if (createSaveFile(`${nameComponents[0]} ${nameComponents[1]}`, filenameToCheck)) {
-  //       res.status(200).send("New User created")
-  //     } else {
-  //       res.status(500).send("Error creating new save file")
-  //     }
-      
-  //   } else {
-  //     res.status(400).send("Error")
-  //   }
-  // } catch (e) {
-  //   console.log(e)
-  //   res.status(500).json({errorMessage: e})
-  // }
-
   } catch (e) {
     console.log(e)
     res.status(500).json({error: e})
   }
 
   
+})
+
+router.get("/random", (req, res) => {
+
+  try {
+    let files = fs.readdirSync(`${__dirname}/../public/javascripts/saved/`)
+    let rndFileNumber = Math.floor(Math.random() * files.length)
+    
+    //Read rndFileData
+    let saveFile = JSON.parse(fs.readFileSync(`${__dirname}/../public/javascripts/saved/${files[rndFileNumber]}`))
+    // let saveFile = JSON.parse(fs.readFileSync(`${__dirname}/../public/javascripts/saved/dear-ron.json`))
+
+    let rndImgNumber = Math.floor(Math.random() * saveFile.images.length)
+    //console.log(`Length: ${saveFile.images.length} - Rnd Num: ${rndImgNumber}`)
+    // console.log(saveFile.name)
+    let returnObj = {
+      studentName: saveFile.name,
+      title: saveFile.images[rndImgNumber].name,
+      data: saveFile.images[rndImgNumber].pixelInfo
+    }
+    // let imageData = rndFile.images[Math.floor(Math.random() * rndFile.images.length)]
+
+    res.json(returnObj)
+  } catch (e) {
+    console.log(e)
+    res.send("ERROR")
+  }
+
 })
 
 const updateImage = (filename, pixelData) => {
